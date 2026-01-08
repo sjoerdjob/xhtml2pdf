@@ -116,6 +116,7 @@ class WaterMarks:
     ) -> tuple[bytes, bool]:
         pdfoutput: pypdf.PdfWriter = pypdf.PdfWriter()
         input1: pypdf.PdfReader = pypdf.PdfReader(istream)
+        pdfoutput.add_metadata(input1.metadata)
         has_bg: bool = False
         for pages, bgouter, step in WaterMarks.get_watermark(
             context, len(input1.pages)
